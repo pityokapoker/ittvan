@@ -9,4 +9,6 @@ build
 .svn
 .settings
 .project
+.classpath
 poker-player-java.iml
+/bin
