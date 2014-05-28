@@ -100,7 +100,7 @@ public class Player
                 }
                 else
                 {
-                    result = 3 * gameSpace.getMinimumRaise();
+                    result = 5 * gameSpace.getMinimumRaise();
                 }
             }
 
@@ -134,6 +134,11 @@ public class Player
             {
                 result = gameSpace.getSmallBlind();
             }
+
+            if (isTopPair(winRate, gameSpace.getCommunityCard()))
+            {
+                result = pokerPlayer.getStack();
+            }
         }
 
         return result;
@@ -141,6 +146,22 @@ public class Player
 
     public static void showdown(JsonElement game)
     {
+    }
+
+    private static boolean isTopPair(int winRate, List<Card> comnmunityCard)
+    {
+        boolean result = false;
+
+        for (Card card : comnmunityCard)
+        {
+            if ((card.getValue() >> 2) == (winRate - 13 - 2))
+            {
+                System.out.println("we have a top pair:P");
+                result = true;
+            }
+        }
+
+        return result;
     }
 
     private static int[] toArray(List<Card> community, List<Card> hole)
