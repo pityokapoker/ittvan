@@ -21,12 +21,15 @@ public class Player
         int result = 0;
         GameSpace gameSpace = Convert.getGameSpace(request);
         List<Card> holeCards = new ArrayList<Card>();
+        PlayerObj pokerPlayer = null;
 
         for (PlayerObj player : gameSpace.getPlayers())
         {
             if ((player.getHoleCards() != null) && !player.getHoleCards().isEmpty())
             {
                 holeCards = player.getHoleCards();
+                System.out.println(player.getId() + " " + player.getName());
+                pokerPlayer = player;
             }
         }
 
@@ -37,9 +40,19 @@ public class Player
         int rank = batman.getRealRank(sortedCards);
         boolean preflop = (gameSpace.getCommunityCard() != null) && gameSpace.getCommunityCard().isEmpty();
 
-        if ((rank > 13) || ((rank > 10) && preflop))
+        if ((rank > 13) || (((holeCards.get(0).getValue() > 10) && (holeCards.get(1).getValue() > 10)) && preflop))
         {
             result = 3 * gameSpace.getMinimumRaise();
+        }
+
+        if (preflop && (rank > 20))
+        {
+            result = pokerPlayer.getStack();
+        }
+
+        if (!preflop && (rank > 23))
+        {
+            result = pokerPlayer.getStack();
         }
 
         return result;
