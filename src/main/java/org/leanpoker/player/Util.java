@@ -19,6 +19,10 @@ public class Util
                 {
                     retV = retV + (playerValue * other.get(otherKey));
                 }
+                else if (playerKey == otherKey)
+                {
+                    retV = retV + (playerValue * other.get(otherKey) / 2);
+                }
             }
         }
 
