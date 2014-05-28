@@ -123,6 +123,11 @@ public class Player
             result = pokerPlayer.getStack();
         }
 
+        if ((gameSpace.getCommunityCard().size() == 5) && (result == 0) && (gameSpace.getCurrentBuyIn() == 0))
+        {
+            result = gameSpace.getSmallBlind();
+        }
+
         return result;
     }
 
