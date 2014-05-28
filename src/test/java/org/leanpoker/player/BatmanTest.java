@@ -38,10 +38,20 @@ public class BatmanTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getRealRank method, of class Batman.
-     */
-    @Test
+    @Ignore @Test
+    public void testHighHand() {
+        Batman instance = new Batman();
+        
+        int result = instance.getRealRank(0,8,12,20+1,24+1,32+1,40);        
+        assertEquals(10, result);
+        result = instance.getRealRank(0,4,8,20+1,24+1,28+1,32);        
+        assertEquals(8, result);
+        
+        result = instance.getRealRank(6,19);
+        assertEquals(4, result);
+    }
+
+    @Ignore @Test
     public void testOnePair() {
         Batman instance = new Batman();
         
@@ -49,9 +59,14 @@ public class BatmanTest {
         assertEquals(14, result);
         result = instance.getRealRank(1,6,10,30,35,49,50);        
         assertEquals(25, result);
+        
+        result = instance.getRealRank(6,7);        
+        assertEquals(14, result);        
+        result = instance.getRealRank(4*4,4*4+2);        
+        assertEquals(13+4, result);        
     }
     
-    @Test
+    @Ignore @Test
     public void testTwoPair() {
         Batman instance = new Batman();
         
@@ -61,7 +76,7 @@ public class BatmanTest {
         assertEquals(38, result);
     }
     
-    @Test
+    @Ignore @Test
     public void testThreeOfKind() {
         Batman instance = new Batman();
         
@@ -71,17 +86,18 @@ public class BatmanTest {
         assertEquals(48, result);
     }
     
-//    @Ignore @Test
-//    public void testStraight() {
-//        Batman instance = new Batman();
-//        
-//        int result = instance.getRealRank(1,5,9,12,18,39,50);        
-//        assertEquals(56, result);
-//    }
-//    
+    
+    
+    @Ignore @Test
+    public void testStraight() {
+        Batman instance = new Batman();
+        
+        int result = instance.getRealRank(1,5,9,12,18,39,50);        
+        assertEquals(56, result);
+    }
+    
 //    @Ignore @Test
 //    public void testPotentialRankMap0(){
-//        System.out.println("testPotentialRankMap0");
 //        Batman instance = new Batman();
 //        HashMap<Integer,Integer> result = instance.getPotentialRankMap0();
 //        assertNotNull(result);
@@ -89,15 +105,26 @@ public class BatmanTest {
 //        for(Integer rank = 0; rank <= 116; rank++)
 //        {
 //            Integer count = result.get(rank);
-//            System.out.println("rank: " + rank + ", count: " + count);
 //            assertNotNull(count);
-//            assertNotEquals((Integer)0, count);
 //            sum += count;
 //        }
+//        assertEquals((Integer)133000000,sum);
 //        
-//        
-//        System.out.println(sum);
-//        
+//    }
+//
+//    @Ignore @Test
+//    public void testPotentialRankMap2(){
+//        Batman instance = new Batman();
+//        HashMap<Integer,Integer> result = instance.getPotentialRankMap2(4+1,4+2);
+//        assertNotNull(result);
+//        Integer sum = 0;
+//        for(Integer rank = 0; rank <= 116; rank++)
+//        {
+//            Integer count = result.get(rank);
+//            assertNotNull(count);
+//            sum += count;
+//        }
+//        //assertEquals((Integer)133000000,sum);
 //        
 //    }
     
