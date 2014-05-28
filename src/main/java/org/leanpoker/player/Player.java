@@ -18,7 +18,7 @@ public class Player
 
     public static boolean isHigh(String figure)
     {
-        return figure.equals("A") || figure.equals("J") || figure.equals("K") || figure.equals("Q");
+        return figure.equals("A") || figure.equals("J") || figure.equals("K") || figure.equals("Q") || figure.equals("10");
     }
 
     public static int betRequest(JsonElement request)
@@ -67,11 +67,21 @@ public class Player
             result = pokerPlayer.getStack();
         }
 
+        if ((result == 0) && preflop && (gameSpace.getMinimumRaise() == gameSpace.getCurrentBuyIn()))
+        {
+            result = gameSpace.getMinimumRaise();
+        }
+
         return result;
     }
 
     public static void showdown(JsonElement game)
     {
+    }
+
+    public boolean isShortyAllIn()
+    {
+        return false;
     }
 
     private static int[] toArray(List<Card> community, List<Card> hole)
