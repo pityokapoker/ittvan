@@ -3,6 +3,9 @@
 	  / /_/ / / / /\  / /| | / /      / /_/ // /  / /   \  / / / / ,<  / /| |      
 	 / _, _/ /_/ / / / ___ |/ /___   / _____/ /  / /    / / /_/ / /| |/ ___ |      
 	/_/ |_|\____/ /_/_/  |_/_____/  /_/   /___/ /_/    /_/\____/_/ |_/_/  p
+	
+	
+
 
 >This is a gradle project that can be imported into any IDE. To run the player execute :
 
@@ -13,3 +16,4 @@
 >`./gradlew tomcatRun`
 
 >Hello itt tnagy
+>Hello itt sferi
