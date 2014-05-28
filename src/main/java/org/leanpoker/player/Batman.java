@@ -23,9 +23,42 @@ public class Batman
                                 for (int p7 = p6 + 1; p7 < 52; p7++)
                                 {
                                     Integer rank = getRealRank(p1, p2, p3, p4, p5, p6, p7);
-                                    Integer count = result.get(rank);
+                                    Integer count = result.get(rank) + 1;
 
-                                    result.put(rank, count + 1);
+                                    result.put(rank, count);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public HashMap<Integer, Integer> getPotentialRankMap2(int mp1, int mp2)
+    {
+        HashMap<Integer, Integer> result = initRankMap();
+
+        for (int p1 = 0; (p1 < 52) && (p1 <= mp1); p1++)
+        {
+            for (int p2 = p1 + 1; (p2 < 52) && (p2 <= mp2); p2++)
+            {
+                for (int p3 = p2 + 1; p3 < 52; p3++)
+                {
+                    for (int p4 = p3 + 1; p4 < 52; p4++)
+                    {
+                        for (int p5 = p4 + 1; p5 < 52; p5++)
+                        {
+                            for (int p6 = p5 + 1; p6 < 52; p6++)
+                            {
+                                for (int p7 = p6 + 1; p7 < 52; p7++)
+                                {
+                                    Integer rank = getRealRank(p1, p2, p3, p4, p5, p6, p7);
+                                    Integer count = result.get(rank) + 1;
+
+                                    result.put(rank, count);
                                 }
                             }
                         }
@@ -109,6 +142,8 @@ public class Batman
                 {
                     straigthValue = prevCardValue;
                 }
+
+                serialLength = 1;
             }
         }
 
