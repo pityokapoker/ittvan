@@ -1,5 +1,7 @@
 package org.leanpoker.player;
 
+import com.google.gson.JsonElement;
+
 import org.leanpoker.player.obj.Card;
 
 import java.util.List;
@@ -80,6 +82,11 @@ public class PokerPlayer
         }
 
         return result;
+    }
+
+    public int betRequest(final JsonElement request)
+    {
+        return 0;
     }
 
     private int getValue(String a)
