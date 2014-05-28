@@ -11,7 +11,7 @@ public class UtilTest
 {
     @Test public void compareTest()
     {
-        Util fixture = new Util();
+        final Util fixture = new Util();
         Map<Integer, Integer> player = new HashMap<Integer, Integer>();
 
         player.put(new Integer(3), new Integer(1));
