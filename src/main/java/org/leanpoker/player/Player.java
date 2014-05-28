@@ -35,10 +35,11 @@ public class Player
 
         util.sort(sortedCards);
         int rank = batman.getRealRank(sortedCards);
+        boolean preflop = (gameSpace.getCommunityCard() != null) && gameSpace.getCommunityCard().isEmpty();
 
-        if ((rank > 13) || ((rank > 10) && (gameSpace.getCommunityCard() != null) && gameSpace.getCommunityCard().isEmpty()))
+        if ((rank > 13) || ((rank > 10) && preflop))
         {
-            result = gameSpace.getMinimumRaise();
+            result = 3 * gameSpace.getMinimumRaise();
         }
 
         return result;
