@@ -100,11 +100,6 @@ public class Player
             result = pokerPlayer.getStack();
         }
 
-        if ((result == 0) && preflop && (gameSpace.getMinimumRaise() == gameSpace.getCurrentBuyIn()))
-        {
-            result = gameSpace.getMinimumRaise();
-        }
-
         if (isPlayerAllIn(gameSpace, PLAYER_SHORTY) && (rank > 23))
         {
             result = pokerPlayer.getStack();
@@ -117,6 +112,15 @@ public class Player
             }
         }
 
+        if ((result == 0) && preflop && ((gameSpace.getSmallBlind() * 3) >= gameSpace.getCurrentBuyIn()))
+        {
+            result = gameSpace.getCurrentBuyIn();
+        }
+
+//        if (gameSpace.getCommunityCard())
+//        {
+//            ;
+//        }
         return result;
     }
 
