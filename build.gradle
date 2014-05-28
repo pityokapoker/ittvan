@@ -21,7 +21,7 @@ tomcatRun {
 }
 
 tomcatStop {
-    stopPort = 7081 + portOffset
+    stopPort = 8081 + portOffset
     stopKey = 'stopKey'
 }
 
