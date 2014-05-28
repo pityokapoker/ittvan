@@ -11,7 +11,7 @@ repositories {
 
 // change this by n*100 to offset the ports of the tomcat server
 // don't forget to change the port accordingly in config.yml too!
-def portOffset = 300
+def portOffset = 600
 
 tomcatRun {
 	httpPort = 8080 + portOffset
@@ -21,7 +21,7 @@ tomcatRun {
 }
 
 tomcatStop {
-    stopPort = 7081 + portOffset
+    stopPort = 8081 + portOffset
     stopKey = 'stopKey'
 }
 
