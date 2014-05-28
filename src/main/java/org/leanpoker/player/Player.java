@@ -42,7 +42,14 @@ public class Player
 
         if ((rank > 13) || (((holeCards.get(0).getValue() > 10) && (holeCards.get(1).getValue() > 10)) && preflop))
         {
-            result = 3 * gameSpace.getMinimumRaise();
+            if ((gameSpace.getSmallBlind() * 6) > gameSpace.getMinimumRaise())
+            {
+                result = gameSpace.getMinimumRaise();
+            }
+            else
+            {
+                result = 3 * gameSpace.getMinimumRaise();
+            }
         }
 
         if (preflop && (rank > 20))
