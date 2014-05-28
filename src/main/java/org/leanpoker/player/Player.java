@@ -109,23 +109,6 @@ public class Player
                 result = pokerPlayer.getStack();
             }
 
-            if (!preflop && (rank > 23))
-            {
-                result = pokerPlayer.getStack();
-            }
-
-            if (isPlayerAllIn(gameSpace, PLAYER_SHORTY) && (rank > 23))
-            {
-                result = pokerPlayer.getStack();
-            }
-            else
-            {
-                if (isPlayerAllIn(gameSpace, PLAYER_SHORTY))
-                {
-                    result = 0;
-                }
-            }
-
             if ((result == 0) && preflop && (gameSpace.getSmallBlind() <= gameSpace.getCurrentBuyIn()))
             {
                 result = gameSpace.getCurrentBuyIn();
