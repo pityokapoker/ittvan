@@ -19,7 +19,8 @@ public class Player
 
     public static boolean isHigh(String figure)
     {
-        return figure.equals("A") || figure.equals("J") || figure.equals("K") || figure.equals("Q") || figure.equals("10");
+        return figure.equals("A") || figure.equals("J") || figure.equals("K") || figure.equals("Q") || figure.equals("10")
+              || figure.equals("T");
     }
 
     public static boolean isPlayerAllIn(GameSpace gameSpace, String strPlayer)
