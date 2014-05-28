@@ -123,11 +123,11 @@ public class Player
         {
             if (winRate >= 13)
             {
-                result = gameSpace.getSmallBlind() * 6;
+                result = (gameSpace.getCurrentBuyIn() == 0) ? (gameSpace.getSmallBlind() * 6) : gameSpace.getCurrentBuyIn();
             }
             else if (winRate >= 25)
             {
-                result = pokerPlayer.getStack();
+                result = (gameSpace.getCurrentBuyIn() == 0) ? (pokerPlayer.getStack() * 6) : gameSpace.getCurrentBuyIn();
             }
 
             if ((gameSpace.getCommunityCard().size() == 5) && (result == 0) && (gameSpace.getCurrentBuyIn() == 0))
