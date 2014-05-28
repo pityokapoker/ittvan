@@ -23,7 +23,7 @@ public class UtilTest
         other.put(new Integer(5), new Integer(1));
         int result = fixture.compare(player, other);
 
-        assertEquals(130, result);
+        assertEquals(0, result);
     }
 
     @Test public void sortTest() throws Exception
