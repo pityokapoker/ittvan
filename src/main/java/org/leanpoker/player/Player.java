@@ -16,6 +16,11 @@ public class Player
     private static Util util = new Util();
     private static Batman batman = new Batman();
 
+    public static boolean isHigh(String figure)
+    {
+        return figure.equals("A") || figure.equals("J") || figure.equals("K") || figure.equals("Q");
+    }
+
     public static int betRequest(JsonElement request)
     {
         int result = 0;
@@ -40,7 +45,7 @@ public class Player
         int rank = batman.getRealRank(sortedCards);
         boolean preflop = (gameSpace.getCommunityCard() != null) && gameSpace.getCommunityCard().isEmpty();
 
-        if ((rank > 13) || (((holeCards.get(0).getValue() > 10) && (holeCards.get(1).getValue() > 10)) && preflop))
+        if ((rank > 13) || (isHigh(holeCards.get(0).getRank()) && isHigh(holeCards.get(1).getRank()) && preflop))
         {
             if ((gameSpace.getSmallBlind() * 6) > gameSpace.getMinimumRaise())
             {
