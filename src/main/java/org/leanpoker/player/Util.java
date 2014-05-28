@@ -25,34 +25,32 @@ public class Util
         return result;
     }
 
-    public int compare(final Map<Integer, Integer> player, final Map<Integer, Integer> other)
+    public double compare(final Map<Integer, Integer> player, final Map<Integer, Integer> other)
     {
         int retV = 0;
-        int playerSum = 0;
-        int otherSum = 0;
+        int sum = 0;
 
         for (Integer playerKey : player.keySet())
         {
             Integer playerValue = player.get(playerKey);
 
-            playerSum += playerValue;
             for (Integer otherKey : other.keySet())
             {
                 Integer otherValue = other.get(otherKey);
 
-                otherSum += otherValue;
+                sum = sum + (playerValue * otherValue);
                 if (playerKey > otherKey)
                 {
                     retV = retV + (playerValue * otherValue);
                 }
                 else if (playerKey == otherKey)
                 {
-                    retV = retV + (playerValue * otherValue / 2);
+                    retV = retV + ((playerValue * otherValue) / 2);
                 }
             }
         }
 
-        return retV / (playerSum * otherSum);
+        return ((double) retV) / sum;
     }
 
     public int[] sort(final int[] input)
