@@ -13,7 +13,7 @@ public class Player
     {
         GameSpace gameSpace = Convert.getGameSpace(request);
 
-        return 50;
+        return 400;
     }
 
     public static void showdown(JsonElement game)
