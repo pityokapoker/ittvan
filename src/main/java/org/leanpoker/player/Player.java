@@ -67,7 +67,7 @@ public class Player
             if ((player.getHoleCards() != null) && !player.getHoleCards().isEmpty())
             {
                 holeCards = player.getHoleCards();
-                System.out.println(player.getId() + " " + player.getName());
+                System.err.println("PLAYER " + player.getId() + " " + player.getName());
                 pokerPlayer = player;
             }
         }
