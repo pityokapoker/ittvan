@@ -71,35 +71,35 @@ public class BatmanTest {
         assertEquals(48, result);
     }
     
-    @Ignore @Test
-    public void testStraight() {
-        Batman instance = new Batman();
-        
-        int result = instance.getRealRank(1,5,9,12,18,39,50);        
-        assertEquals(56, result);
-    }
-    
-    @Ignore @Test
-    public void testPotentialRankMap0(){
-        System.out.println("testPotentialRankMap0");
-        Batman instance = new Batman();
-        HashMap<Integer,Integer> result = instance.getPotentialRankMap0();
-        assertNotNull(result);
-        Integer sum = 0;
-        for(Integer rank = 0; rank <= 116; rank++)
-        {
-            Integer count = result.get(rank);
-            System.out.println("rank: " + rank + ", count: " + count);
-            assertNotNull(count);
-            assertNotEquals((Integer)0, count);
-            sum += count;
-        }
-        
-        
-        System.out.println(sum);
-        
-        
-    }
+//    @Ignore @Test
+//    public void testStraight() {
+//        Batman instance = new Batman();
+//        
+//        int result = instance.getRealRank(1,5,9,12,18,39,50);        
+//        assertEquals(56, result);
+//    }
+//    
+//    @Ignore @Test
+//    public void testPotentialRankMap0(){
+//        System.out.println("testPotentialRankMap0");
+//        Batman instance = new Batman();
+//        HashMap<Integer,Integer> result = instance.getPotentialRankMap0();
+//        assertNotNull(result);
+//        Integer sum = 0;
+//        for(Integer rank = 0; rank <= 116; rank++)
+//        {
+//            Integer count = result.get(rank);
+//            System.out.println("rank: " + rank + ", count: " + count);
+//            assertNotNull(count);
+//            assertNotEquals((Integer)0, count);
+//            sum += count;
+//        }
+//        
+//        
+//        System.out.println(sum);
+//        
+//        
+//    }
     
     
 }
