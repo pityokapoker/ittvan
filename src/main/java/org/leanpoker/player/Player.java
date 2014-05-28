@@ -36,7 +36,7 @@ public class Player
         util.sort(sortedCards);
         int rank = batman.getRealRank(sortedCards);
 
-        if (rank > 13)
+        if ((rank > 13) || ((rank > 10) && (gameSpace.getCommunityCard() != null) && gameSpace.getCommunityCard().isEmpty()))
         {
             result = gameSpace.getMinimumRaise();
         }
