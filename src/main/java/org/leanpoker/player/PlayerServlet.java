@@ -13,12 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/")
 public class PlayerServlet extends HttpServlet
 {
-    private PokerPlayer player;
-
+//    private PokerPlayer player;
     @Override public void init() throws ServletException
     {
         super.init();
-        player = new PokerPlayer();
+//        player = new PokerPlayer();
     }
 
     @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
