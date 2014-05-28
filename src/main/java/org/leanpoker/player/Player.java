@@ -92,7 +92,7 @@ public class Player
 
         if (winRate == 0)
         {
-            if ((rank > 13) || (isHigh(holeCards.get(0).getRank()) && isHigh(holeCards.get(1).getRank()) && preflop))
+            if ((rank > 13) || (isHigh(holeCards.get(0).getRank()) || isHigh(holeCards.get(1).getRank())))
             {
                 if ((gameSpace.getSmallBlind() * 6) > gameSpace.getCurrentBuyIn())
                 {
