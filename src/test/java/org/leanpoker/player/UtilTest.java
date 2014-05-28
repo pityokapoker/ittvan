@@ -14,16 +14,16 @@ public class UtilTest
         Util fixture = new Util();
         Map<Integer, Integer> player = new HashMap<Integer, Integer>();
 
-        player.put(new Integer(2), new Integer(100));
-        player.put(new Integer(10), new Integer(10));
+        player.put(new Integer(3), new Integer(1));
+        player.put(new Integer(5), new Integer(1));
         Map<Integer, Integer> other = new HashMap<Integer, Integer>();
 
-        other.put(new Integer(1), new Integer(1));
+        other.put(new Integer(2), new Integer(1));
         other.put(new Integer(3), new Integer(1));
-        other.put(new Integer(5), new Integer(1));
-        int result = fixture.compare(player, other);
+        other.put(new Integer(4), new Integer(1));
+        double result = fixture.compare(player, other);
 
-        assertEquals(0, result);
+        org.junit.Assert.assertTrue(result > 0.5);
     }
 
     @Test public void sortTest() throws Exception
