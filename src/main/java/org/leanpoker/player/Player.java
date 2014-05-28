@@ -2,16 +2,21 @@ package org.leanpoker.player;
 
 import com.google.gson.JsonElement;
 
-import java.util.Map;
+import org.leanpoker.player.obj.GameSpace;
+import org.leanpoker.player.parse.Convert;
 
-public class Player {
+public class Player
+{
+    static final String VERSION = "Royal Pityoka AI player";
 
-    static final String VERSION = "Default Java folding player";
+    public static int betRequest(JsonElement request)
+    {
+        GameSpace gameSpace = Convert.getGameSpace(request);
 
-    public static int betRequest(JsonElement request) {
-        return 0;
+        return 50;
     }
 
-    public static void showdown(JsonElement game) {
+    public static void showdown(JsonElement game)
+    {
     }
 }
