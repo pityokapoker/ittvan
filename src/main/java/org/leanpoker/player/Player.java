@@ -96,7 +96,7 @@ public class Player
             {
                 if ((gameSpace.getSmallBlind() * 6) > gameSpace.getCurrentBuyIn())
                 {
-                    result = gameSpace.getMinimumRaise();
+                    result = gameSpace.getCurrentBuyIn();
                 }
                 else
                 {
