@@ -1,26 +1,24 @@
 package org.leanpoker.player;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.io.InputStreamReader;
+import java.io.Reader;
+
 public class GsonTest
 {
+    private static final String TEST_JSON = "../../../../../resources/test/test.json";
 
-    /*
     @Test public void testGson() throws Exception
     {
-    final JsonParser parser = new JsonParser();
-    final FileReader fileReader = new FileReader("d:\\temp\\gson1.txt");
-    final JsonElement jsonElement = parser.parse(fileReader);
-    GameSpace gameSpace = Convert.getGameSpace(jsonElement);
+        final JsonParser parser = new JsonParser();
+        final Reader reader = new InputStreamReader(this.getClass().getResourceAsStream(TEST_JSON));
+        final JsonElement jsonElement = parser.parse(reader);
 
-    System.out.println(gameSpace);
-    }*/
-//    @Test public void testGson() throws Exception
-//    {
-//        final JsonParser parser = new JsonParser();
-//        final FileReader fileReader = new FileReader("g:\\test.json");
-//        final JsonElement jsonElement = parser.parse(fileReader);
-//        GameSpace gameSpace = Convert.getGameSpace(jsonElement);
-//
-//        assert (0 == Player.betRequest(jsonElement));
-////    System.out.println(gameSpace);
-//    }
+        Assert.assertTrue(0 < Player.betRequest(jsonElement));
+    }
 }
