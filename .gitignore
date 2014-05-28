@@ -12,3 +12,4 @@ build
 .classpath
 poker-player-java.iml
 /bin
+/.nb-gradle/private/
