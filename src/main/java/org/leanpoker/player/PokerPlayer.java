@@ -1,17 +1,17 @@
 package org.leanpoker.player;
 
-import com.google.gson.JsonElement;
-
 import org.leanpoker.player.obj.Card;
+
+import java.util.List;
 
 public class PokerPlayer
 {
+    public final static String VERSION = "Royal Pityoka 1.0";
     private int bet;
-    private Card closedCard1;
-    private Card closedCard2;
     private Card flop1;
     private Card flop2;
     private Card flop3;
+    private List<Card> holeCards;
     private int money;
     private int river;
     private int turn;
@@ -24,6 +24,16 @@ public class PokerPlayer
     public void setBet(int bet)
     {
         this.bet = bet;
+    }
+
+    public List<Card> getHoleCards()
+    {
+        return holeCards;
+    }
+
+    public void setHoleCards(List<Card> holeCards)
+    {
+        this.holeCards = holeCards;
     }
 
     public int getMoney()
@@ -59,10 +69,10 @@ public class PokerPlayer
     public int betRequest()
     {
         int result = 0;
-        int cardValue1 = getValue(closedCard1.getRank());
-        int cardValue2 = getValue(closedCard2.getRank());
-        boolean hasHighPair = (cardValue1 == cardValue2) && (cardValue1 > 0);
-        boolean hasAk = (cardValue1 + cardValue2) >= 21;
+        int cardValue1 = holeCards.get(0).getValue();
+        int cardValue2 = holeCards.get(1).getValue();
+        boolean hasHighPair = (cardValue1 == cardValue2) && (cardValue1 > 11);
+        boolean hasAk = (cardValue1 + cardValue2) >= 27;
 
         if (hasHighPair || hasAk)
         {
@@ -70,11 +80,6 @@ public class PokerPlayer
         }
 
         return result;
-    }
-
-    public int betRequest(final JsonElement request)
-    {
-        return 50;
     }
 
     private int getValue(String a)
