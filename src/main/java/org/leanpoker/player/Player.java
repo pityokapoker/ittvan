@@ -118,10 +118,11 @@ public class Player
             result = gameSpace.getCurrentBuyIn();
         }
 
-//        if (gameSpace.getCommunityCard())
-//        {
-//            ;
-//        }
+        if (preflop && ((gameSpace.getSmallBlind() * 8) > pokerPlayer.getStack()) && (rank > 12))
+        {
+            result = pokerPlayer.getStack();
+        }
+
         return result;
     }
 
