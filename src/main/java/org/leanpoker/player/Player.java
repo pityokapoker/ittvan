@@ -109,15 +109,15 @@ public class Player
                 result = pokerPlayer.getStack();
             }
 
-            if ((result == 0) && preflop && (gameSpace.getSmallBlind() <= gameSpace.getCurrentBuyIn()))
+            if ((result == 0) && preflop && (gameSpace.getSmallBlind() >= gameSpace.getCurrentBuyIn()))
             {
                 result = gameSpace.getCurrentBuyIn();
             }
 
-            if (preflop && ((gameSpace.getSmallBlind() * 6) > pokerPlayer.getStack()) && (rank > 12))
-            {
-                result = pokerPlayer.getStack();
-            }
+//            if (preflop && ((gameSpace.getSmallBlind() * 6) > pokerPlayer.getStack()) && (rank > 12))
+//            {
+//                result = pokerPlayer.getStack();
+//            }
         }
         else
         {
