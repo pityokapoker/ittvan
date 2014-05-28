@@ -4,6 +4,7 @@ import org.leanpoker.player.obj.GameSpace;
 import org.leanpoker.player.obj.PlayerObj;
 
 import java.util.Arrays;
+import java.util.Map;
 
 public class Util
 {
@@ -22,6 +23,30 @@ public class Util
         }
 
         return result;
+    }
+
+    public int compare(final Map<Integer, Integer> player, final Map<Integer, Integer> other)
+    {
+        int retV = 0;
+
+        for (Integer playerKey : player.keySet())
+        {
+            Integer playerValue = player.get(playerKey);
+
+            for (Integer otherKey : other.keySet())
+            {
+                if (playerKey > otherKey)
+                {
+                    retV = retV + (playerValue * other.get(otherKey));
+                }
+                else if (playerKey == otherKey)
+                {
+                    retV = retV + (playerValue * other.get(otherKey) / 2);
+                }
+            }
+        }
+
+        return retV;
     }
 
     public int[] sort(final int[] input)
