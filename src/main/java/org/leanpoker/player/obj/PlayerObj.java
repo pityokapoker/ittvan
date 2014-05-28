@@ -1,8 +1,18 @@
 package org.leanpoker.player.obj;
 
+import java.util.List;
+
 public class PlayerObj
 {
+    public enum Status
+    {
+        active,
+        folded,
+        out
+    }
+
     private int bet;
+    private List<Card> holeCards;
     private int id;
     private String name;
     private int stack;
@@ -17,6 +27,16 @@ public class PlayerObj
     public void setBet(int bet)
     {
         this.bet = bet;
+    }
+
+    public List<Card> getHoleCards()
+    {
+        return holeCards;
+    }
+
+    public void setHoleCards(List<Card> holeCards)
+    {
+        this.holeCards = holeCards;
     }
 
     public int getId()
@@ -67,5 +87,11 @@ public class PlayerObj
     public void setVersion(String version)
     {
         this.version = version;
+    }
+
+    @Override public String toString()
+    {
+        return "PlayerObj [bet=" + bet + ", holeCards=" + holeCards + ", id=" + id + ", name=" + name + ", stack=" + stack + ", status="
+              + status + ", version=" + version + "]";
     }
 }

@@ -7,7 +7,6 @@ public class GameSpace
     private List<Card> communityCard;
     private int currentBuyIn;
     private int dealer;
-    private List<Card> holeCards;
     private int inAction;
     private int minimumRaise;
     private int orbits;
@@ -43,16 +42,6 @@ public class GameSpace
     public void setDealer(int dealer)
     {
         this.dealer = dealer;
-    }
-
-    public List<Card> getHoleCards()
-    {
-        return holeCards;
-    }
-
-    public void setHoleCards(List<Card> holeCards)
-    {
-        this.holeCards = holeCards;
     }
 
     public int getInAction()
@@ -113,5 +102,12 @@ public class GameSpace
     public void setSmallBlind(int smallBlind)
     {
         this.smallBlind = smallBlind;
+    }
+
+    @Override public String toString()
+    {
+        return "GameSpace [communityCard=" + communityCard + ", currentBuyIn=" + currentBuyIn + ", dealer=" + dealer + ", inAction="
+              + inAction + ", minimumRaise=" + minimumRaise + ", orbits=" + orbits + ", players=" + players + ", pot=" + pot
+              + ", smallBlind=" + smallBlind + "]";
     }
 }
