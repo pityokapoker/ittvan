@@ -94,7 +94,7 @@ public class Player
         {
             if ((rank > 13) || (isHigh(holeCards.get(0).getRank()) && isHigh(holeCards.get(1).getRank()) && preflop))
             {
-                if ((gameSpace.getSmallBlind() * 6) > gameSpace.getMinimumRaise())
+                if ((gameSpace.getSmallBlind() * 6) > gameSpace.getCurrentBuyIn())
                 {
                     result = gameSpace.getMinimumRaise();
                 }
