@@ -25,7 +25,7 @@ public class Util
         return retV;
     }
 
-    public int[] sort(final int[] input)
+    public int[] sort(final int... input)
     {
         Arrays.sort(input);
 
