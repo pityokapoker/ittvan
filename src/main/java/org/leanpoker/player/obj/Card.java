@@ -42,6 +42,11 @@ public class Card
         return value;
     }
 
+    @Override public String toString()
+    {
+        return "Card [rank=" + rank + ", suit=" + suit + ", value=" + value + "]";
+    }
+
     int compute()
     {
         int intRank;
