@@ -5,9 +5,9 @@ public class Card
     public enum Suit
     {
         clubs(0),
-        spades(1),
+        spades(3),
         hearts(2),
-        diamonds(3);
+        diamonds(1);
         public final int value;
 
         Suit(int value)
