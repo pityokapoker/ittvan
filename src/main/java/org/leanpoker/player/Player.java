@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 
 public class Player
 {
-    static final String VERSION = "Default Java folding player";
+    static final String VERSION = "Royal Pityoka AI player";
 
     public static int betRequest(JsonElement request)
     {

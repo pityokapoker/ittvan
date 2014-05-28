@@ -15,6 +15,13 @@ public class CardTest
         assertEquals(0, card.getValue());
     }
 
+    @Test public void testClubsA() throws Exception
+    {
+        Card card = new Card("A", Suit.clubs);
+
+        assertEquals(48, card.getValue());
+    }
+
     @Test public void testDiamond2() throws Exception
     {
         Card card = new Card("2", Suit.diamonds);
@@ -34,5 +41,12 @@ public class CardTest
         Card card = new Card("2", Suit.spades);
 
         assertEquals(3, card.getValue());
+    }
+
+    @Test public void testSpadesA() throws Exception
+    {
+        Card card = new Card("A", Suit.spades);
+
+        assertEquals(51, card.getValue());
     }
 }
