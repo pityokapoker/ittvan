@@ -78,54 +78,79 @@ public class Player
         util.sort(sortedCards);
         int rank = batman.getRealRank(sortedCards);
         boolean preflop = (gameSpace.getCommunityCard() != null) && gameSpace.getCommunityCard().isEmpty();
+        int winRate = 0;
 
-        if ((rank > 13) || (isHigh(holeCards.get(0).getRank()) && isHigh(holeCards.get(1).getRank()) && preflop))
+        if (!preflop)
         {
-            if ((gameSpace.getSmallBlind() * 6) > gameSpace.getMinimumRaise())
+            int[] commonCards = Player.toArray((gameSpace.getCommunityCard() == null) ? new ArrayList<Card>()
+                                                                                      : gameSpace.getCommunityCard(),
+                    new ArrayList<Card>());
+            int[] arrHoleCards = Player.toArray(new ArrayList<Card>(), holeCards);
+
+            winRate = batman.getWinRate(arrHoleCards, commonCards);
+        }
+
+        if (winRate == 0)
+        {
+            if ((rank > 13) || (isHigh(holeCards.get(0).getRank()) && isHigh(holeCards.get(1).getRank()) && preflop))
             {
-                result = gameSpace.getMinimumRaise();
+                if ((gameSpace.getSmallBlind() * 6) > gameSpace.getMinimumRaise())
+                {
+                    result = gameSpace.getMinimumRaise();
+                }
+                else
+                {
+                    result = 3 * gameSpace.getMinimumRaise();
+                }
+            }
+
+            if (preflop && (rank > 20))
+            {
+                result = pokerPlayer.getStack();
+            }
+
+            if (!preflop && (rank > 23))
+            {
+                result = pokerPlayer.getStack();
+            }
+
+            if (isPlayerAllIn(gameSpace, PLAYER_SHORTY) && (rank > 23))
+            {
+                result = pokerPlayer.getStack();
             }
             else
             {
-                result = 3 * gameSpace.getMinimumRaise();
+                if (isPlayerAllIn(gameSpace, PLAYER_SHORTY))
+                {
+                    result = 0;
+                }
             }
-        }
 
-        if (preflop && (rank > 20))
-        {
-            result = pokerPlayer.getStack();
-        }
+            if ((result == 0) && preflop && (gameSpace.getSmallBlind() <= gameSpace.getCurrentBuyIn()))
+            {
+                result = gameSpace.getCurrentBuyIn();
+            }
 
-        if (!preflop && (rank > 23))
-        {
-            result = pokerPlayer.getStack();
-        }
-
-        if (isPlayerAllIn(gameSpace, PLAYER_SHORTY) && (rank > 23))
-        {
-            result = pokerPlayer.getStack();
+            if (preflop && ((gameSpace.getSmallBlind() * 6) > pokerPlayer.getStack()) && (rank > 12))
+            {
+                result = pokerPlayer.getStack();
+            }
         }
         else
         {
-            if (isPlayerAllIn(gameSpace, PLAYER_SHORTY))
+            if (winRate >= 13)
             {
-                result = 0;
+                result = gameSpace.getSmallBlind() * 6;
             }
-        }
+            else if (winRate >= 25)
+            {
+                result = pokerPlayer.getStack();
+            }
 
-        if ((result == 0) && preflop && (gameSpace.getSmallBlind() <= gameSpace.getCurrentBuyIn()))
-        {
-            result = gameSpace.getCurrentBuyIn();
-        }
-
-        if (preflop && ((gameSpace.getSmallBlind() * 6) > pokerPlayer.getStack()) && (rank > 12))
-        {
-            result = pokerPlayer.getStack();
-        }
-
-        if ((gameSpace.getCommunityCard().size() == 5) && (result == 0) && (gameSpace.getCurrentBuyIn() == 0))
-        {
-            result = gameSpace.getSmallBlind();
+            if ((gameSpace.getCommunityCard().size() == 5) && (result == 0) && (gameSpace.getCurrentBuyIn() == 0))
+            {
+                result = gameSpace.getSmallBlind();
+            }
         }
 
         return result;
