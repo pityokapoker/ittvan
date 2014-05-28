@@ -7,25 +7,30 @@ public class Batman
     public HashMap<Integer, Integer> getPotentialRankMap0()
     {
         HashMap<Integer, Integer> result = initRankMap();
+        int[] resultArray = new int[117];
 
-        for (int p1 = 0; p1 < 52; p1++)
+        for (int i = 0; i < 117; i++)
         {
-            for (int p2 = p1 + 1; p2 < 52; p2++)
+            resultArray[i] = 0;
+        }
+
+        for (int p1 = 0; p1 < 46; p1++)
+        {
+            for (int p2 = p1 + 1; p2 < 47; p2++)
             {
-                for (int p3 = p2 + 1; p3 < 52; p3++)
+                for (int p3 = p2 + 1; p3 < 48; p3++)
                 {
-                    for (int p4 = p3 + 1; p4 < 52; p4++)
+                    for (int p4 = p3 + 1; p4 < 49; p4++)
                     {
-                        for (int p5 = p4 + 1; p5 < 52; p5++)
+                        for (int p5 = p4 + 1; p5 < 50; p5++)
                         {
-                            for (int p6 = p5 + 1; p6 < 52; p6++)
+                            for (int p6 = p5 + 1; p6 < 51; p6++)
                             {
                                 for (int p7 = p6 + 1; p7 < 52; p7++)
                                 {
-                                    Integer rank = getRealRank(p1, p2, p3, p4, p5, p6, p7);
-                                    Integer count = result.get(rank) + 1;
+                                    int rank = getRealRank(p1, p2, p3, p4, p5, p6, p7);
 
-                                    result.put(rank, count);
+                                    resultArray[rank] = resultArray[rank] + 1;
                                 }
                             }
                         }
@@ -40,25 +45,49 @@ public class Batman
     public HashMap<Integer, Integer> getPotentialRankMap2(int mp1, int mp2)
     {
         HashMap<Integer, Integer> result = initRankMap();
+        int page1 = mp1 / 4;
+        int page2 = mp2 / 4;
 
-        for (int p1 = 0; (p1 < 52) && (p1 <= mp1); p1++)
+        for (int p1 = 0; p1 < 7; p1++)
         {
-            for (int p2 = p1 + 1; (p2 < 52) && (p2 <= mp2); p2++)
+            for (int p2 = p1; p2 < 8; p2++)
             {
-                for (int p3 = p2 + 1; p3 < 52; p3++)
+                for (int p3 = p2; p3 < 9; p3++)
                 {
-                    for (int p4 = p3 + 1; p4 < 52; p4++)
+                    for (int p4 = p3; p4 < 10; p4++)
                     {
-                        for (int p5 = p4 + 1; p5 < 52; p5++)
+                        for (int p5 = p4; p5 < 11; p5++)
                         {
-                            for (int p6 = p5 + 1; p6 < 52; p6++)
+                            for (int p6 = p5; p6 < 12; p6++)
                             {
-                                for (int p7 = p6 + 1; p7 < 52; p7++)
+                                for (int p7 = p6; p7 < 13; p7++)
                                 {
-                                    Integer rank = getRealRank(p1, p2, p3, p4, p5, p6, p7);
-                                    Integer count = result.get(rank) + 1;
+                                    if ((page1 == p1) || (page1 == p2) || (page1 == p3) || (page1 == p4) || (page1 == p5) || (page1 == p6)
+                                          || (page1 == p7))
+                                    {
+                                        boolean go = false;
 
-                                    result.put(rank, count);
+                                        if (page1 == page2)
+                                        {
+                                            ;  //TODO
+                                        }
+                                        else
+                                        {
+                                            if ((page2 == p1) || (page2 == p2) || (page2 == p3) || (page2 == p4) || (page2 == p5)
+                                                  || (page2 == p6) || (page2 == p7))
+                                            {
+                                                go = true;
+                                            }
+                                        }
+
+                                        if (go)
+                                        {
+                                            Integer rank = getRealRank(p1 * 4, p2 * 4, p3 * 4, p4 * 4, p5 * 4, p6 * 4, p7 * 4);
+                                            Integer count = result.get(rank) + 1;
+
+                                            result.put(rank, count);
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -236,6 +265,20 @@ public class Batman
         }
 
         return rank;
+    }
+
+    public int getWinRate(int[] homeCards, int[] commonCards)
+    {
+        int[] allCards = new int[homeCards.length + commonCards.length];
+
+        System.arraycopy(homeCards, 0, allCards, 0, homeCards.length);
+        System.arraycopy(commonCards, 0, allCards, homeCards.length, commonCards.length);
+        Util util = new Util();
+        int[] sortedAllCards = util.sort(allCards);
+        int homeRank = getRealRank(sortedAllCards);
+        int commonRank = getRealRank(commonCards);
+
+        return homeRank - commonRank;
     }
 
     private HashMap<Integer, Integer> initRankMap()

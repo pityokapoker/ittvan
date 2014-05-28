@@ -38,7 +38,7 @@ public class BatmanTest {
     public void tearDown() {
     }
 
-    @Ignore @Test
+     @Test
     public void testHighHand() {
         Batman instance = new Batman();
         
@@ -51,7 +51,7 @@ public class BatmanTest {
         assertEquals(4, result);
     }
 
-    @Ignore @Test
+     @Test
     public void testOnePair() {
         Batman instance = new Batman();
         
@@ -66,7 +66,7 @@ public class BatmanTest {
         assertEquals(13+4, result);        
     }
     
-    @Ignore @Test
+     @Test
     public void testTwoPair() {
         Batman instance = new Batman();
         
@@ -76,7 +76,7 @@ public class BatmanTest {
         assertEquals(38, result);
     }
     
-    @Ignore @Test
+     @Test
     public void testThreeOfKind() {
         Batman instance = new Batman();
         
@@ -88,7 +88,7 @@ public class BatmanTest {
     
     
     
-    @Ignore @Test
+     @Test
     public void testStraight() {
         Batman instance = new Batman();
         
@@ -112,10 +112,10 @@ public class BatmanTest {
 //        
 //    }
 //
-//    @Ignore @Test
+//    @Test
 //    public void testPotentialRankMap2(){
 //        Batman instance = new Batman();
-//        HashMap<Integer,Integer> result = instance.getPotentialRankMap2(4+1,4+2);
+//        HashMap<Integer,Integer> result = instance.getPotentialRankMap2(1*4+1,2*4+2);
 //        assertNotNull(result);
 //        Integer sum = 0;
 //        for(Integer rank = 0; rank <= 116; rank++)
@@ -127,6 +127,15 @@ public class BatmanTest {
 //        //assertEquals((Integer)133000000,sum);
 //        
 //    }
+    
+    @Test
+    public void testGetWinRate(){
+        Batman instance = new Batman();
+        int homeCards[] = new int[]{0*4,2*4};
+        int commonCards[] = new int[]{0*4+1,0*4+2,10*4+1};
+        
+        instance.getWinRate(homeCards, commonCards);
+    }
     
     
 }
