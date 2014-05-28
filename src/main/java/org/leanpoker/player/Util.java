@@ -1,26 +1,23 @@
 package org.leanpoker.player;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Util
 {
-    public Map<Integer, Integer> compare(final Map<Integer, Integer> player, final Map<Integer, Integer> other)
+    public int compare(final Map<Integer, Integer> player, final Map<Integer, Integer> other)
     {
-        Map<Integer, Integer> retV = new HashMap<Integer, Integer>(player.size());
+        int retV = 0;
 
         for (Integer playerKey : player.keySet())
         {
+            Integer playerValue = player.get(playerKey);
+
             for (Integer otherKey : other.keySet())
             {
-                final Integer otherValue = player.get(otherKey);
-
                 if (playerKey > otherKey)
                 {
-                    final Integer current = player.get(playerKey);
-
-                    retV.put(playerKey, current + otherValue);
+                    retV = retV + (playerValue * other.get(otherKey));
                 }
             }
         }
