@@ -13,12 +13,46 @@ import java.util.List;
 public class Player
 {
     static final String VERSION = "Royal Pityoka AI player";
+    private final static String PLAYER_SHORTY = "Get Shorty";
     private static Util util = new Util();
     private static Batman batman = new Batman();
 
     public static boolean isHigh(String figure)
     {
-        return figure.equals("A") || figure.equals("J") || figure.equals("K") || figure.equals("Q");
+        return figure.equals("A") || figure.equals("J") || figure.equals("K") || figure.equals("Q") || figure.equals("10")
+              || figure.equals("T");
+    }
+
+    public static boolean isPlayerAllIn(GameSpace gameSpace, String strPlayer)
+    {
+        boolean result = false;
+        PlayerObj player = getPlayerByName(gameSpace, strPlayer);
+
+        if (player == null)
+        {
+            System.err.println("user cannot be found by name");
+        }
+        else
+        {
+            result = (player.getBet() > 0) && (player.getStack() == 0);
+        }
+
+        return result;
+    }
+
+    public static PlayerObj getPlayerByName(GameSpace gameSpace, String name)
+    {
+        PlayerObj result = null;
+
+        for (PlayerObj player : gameSpace.getPlayers())
+        {
+            if (player.getName().equalsIgnoreCase(name))
+            {
+                return player;
+            }
+        }
+
+        return result;
     }
 
     public static int betRequest(JsonElement request)
@@ -33,7 +67,7 @@ public class Player
             if ((player.getHoleCards() != null) && !player.getHoleCards().isEmpty())
             {
                 holeCards = player.getHoleCards();
-                System.err.println(" ABC2 " + player.getId() + " " + player.getName());
+                System.err.println("PLAYER " + player.getId() + " " + player.getName());
                 pokerPlayer = player;
             }
         }
@@ -67,6 +101,27 @@ public class Player
             result = pokerPlayer.getStack();
         }
 
+        if (isPlayerAllIn(gameSpace, PLAYER_SHORTY) && (rank > 23))
+        {
+            result = pokerPlayer.getStack();
+        }
+        else
+        {
+            if (isPlayerAllIn(gameSpace, PLAYER_SHORTY))
+            {
+                result = 0;
+            }
+        }
+
+        if ((result == 0) && preflop && ((gameSpace.getSmallBlind() * 3) >= gameSpace.getCurrentBuyIn()))
+        {
+            result = gameSpace.getCurrentBuyIn();
+        }
+
+//        if (gameSpace.getCommunityCard())
+//        {
+//            ;
+//        }
         return result;
     }
 

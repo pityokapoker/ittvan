@@ -11,7 +11,7 @@ import java.io.Reader;
 
 public class GsonTest
 {
-    private static final String TEST_JSON = "../../../../../resources/test/test.json";
+    public static final String TEST_JSON = "../../../../../resources/test/test.json";
 
     @Test public void testGson() throws Exception
     {
